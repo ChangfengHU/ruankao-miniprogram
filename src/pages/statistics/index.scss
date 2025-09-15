@@ -1,0 +1,338 @@
+.statistics-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--color-background) 0%, #f8f9fa 100%);
+
+  .content {
+    height: 100vh;
+    padding: var(--spacing-md);
+  }
+
+  .section-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  // 总体统计部分
+  .overview-section {
+    margin-bottom: var(--spacing-xl);
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-md);
+
+      .overview-card {
+        background: var(--color-surface);
+        padding: var(--spacing-lg);
+        border-radius: var(--border-radius-lg);
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+
+        .overview-icon {
+          width: 50px;
+          height: 50px;
+          border-radius: var(--border-radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto var(--spacing-md);
+
+          &.total { background: linear-gradient(135deg, #007AFF 0%, #5856d6 100%); }
+          &.accuracy { background: linear-gradient(135deg, #34C759 0%, #30d158 100%); }
+          &.time { background: linear-gradient(135deg, #FF9500 0%, #ff6b00 100%); }
+          &.streak { background: linear-gradient(135deg, #FF3B30 0%, #d70015 100%); }
+
+          .icon {
+            font-size: 24px;
+            filter: grayscale(100%) brightness(0) invert(1);
+          }
+        }
+
+        .overview-number {
+          font-size: var(--font-size-xxl);
+          font-weight: var(--font-weight-bold);
+          color: var(--color-text-primary);
+          margin-bottom: var(--spacing-xs);
+        }
+
+        .overview-label {
+          font-size: var(--font-size-sm);
+          color: var(--color-text-secondary);
+        }
+      }
+    }
+  }
+
+  // 趋势图部分
+  .trend-section {
+    margin-bottom: var(--spacing-xl);
+
+    .chart-container {
+      background: var(--color-surface);
+      padding: var(--spacing-lg);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-sm);
+
+      .chart-legend {
+        display: flex;
+        gap: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+
+        .legend-item {
+          display: flex;
+          align-items: center;
+          gap: var(--spacing-xs);
+
+          .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+
+            &.total-bar {
+              background: var(--color-primary);
+            }
+
+            &.accuracy-line {
+              background: var(--color-success);
+            }
+          }
+
+          .legend-text {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+          }
+        }
+      }
+
+      .chart {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        height: 120px;
+        padding: var(--spacing-sm) 0;
+
+        .chart-bar-group {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .chart-bar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: var(--spacing-xs);
+
+            .accuracy-text {
+              font-size: var(--font-size-xs);
+              color: var(--color-success);
+              margin-bottom: var(--spacing-xs);
+              font-weight: var(--font-weight-medium);
+            }
+
+            .chart-bar {
+              width: 20px;
+              min-height: 4px;
+              border-radius: 2px;
+              margin-bottom: var(--spacing-xs);
+              transition: height 0.3s ease;
+            }
+
+            .bar-label {
+              font-size: var(--font-size-xs);
+              color: var(--color-text-primary);
+              font-weight: var(--font-weight-medium);
+            }
+          }
+
+          .chart-date {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-secondary);
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  // 错题分析部分
+  .wrong-analysis-section {
+    margin-bottom: var(--spacing-xl);
+
+    .wrong-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
+
+      .wrong-stat-card {
+        background: var(--color-surface);
+        padding: var(--spacing-md);
+        border-radius: var(--border-radius-md);
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+
+        .wrong-stat-number {
+          font-size: var(--font-size-xl);
+          font-weight: var(--font-weight-bold);
+          color: var(--color-error);
+          margin-bottom: var(--spacing-xs);
+        }
+
+        .wrong-stat-label {
+          font-size: var(--font-size-sm);
+          color: var(--color-text-secondary);
+        }
+      }
+    }
+
+    .progress-indicator {
+      background: var(--color-surface);
+      padding: var(--spacing-lg);
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-sm);
+
+      .progress-text {
+        font-size: var(--font-size-md);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-text-primary);
+        margin-bottom: var(--spacing-md);
+      }
+
+      .progress-bar {
+        height: 8px;
+        background: var(--color-border);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: var(--spacing-sm);
+
+        .progress-fill {
+          height: 100%;
+          background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-success) 100%);
+          border-radius: 4px;
+          transition: width 0.3s ease;
+        }
+      }
+
+      .progress-percentage {
+        text-align: right;
+        font-size: var(--font-size-sm);
+        color: var(--color-text-secondary);
+        font-weight: var(--font-weight-medium);
+      }
+    }
+  }
+
+  // 知识点掌握度部分
+  .knowledge-section {
+    margin-bottom: var(--spacing-xl);
+
+    .knowledge-list {
+      background: var(--color-surface);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+
+      .knowledge-item {
+        padding: var(--spacing-lg);
+        border-bottom: 1px solid var(--color-border);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .knowledge-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: var(--spacing-sm);
+
+          .knowledge-name {
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-primary);
+          }
+
+          .knowledge-count {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+          }
+        }
+
+        .mastery-progress {
+          display: flex;
+          align-items: center;
+          gap: var(--spacing-md);
+
+          .mastery-bar {
+            flex: 1;
+            height: 6px;
+            background: var(--color-border);
+            border-radius: 3px;
+            overflow: hidden;
+
+            .mastery-fill {
+              height: 100%;
+              border-radius: 3px;
+              transition: width 0.3s ease;
+            }
+          }
+
+          .mastery-percentage {
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-primary);
+            min-width: 35px;
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+
+  // 学习建议部分
+  .suggestions-section {
+    margin-bottom: var(--spacing-xl);
+
+    .suggestions-list {
+      .suggestion-item {
+        background: var(--color-surface);
+        padding: var(--spacing-lg);
+        border-radius: var(--border-radius-lg);
+        margin-bottom: var(--spacing-md);
+        display: flex;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+        box-shadow: var(--shadow-sm);
+
+        .suggestion-icon {
+          width: 36px;
+          height: 36px;
+          border-radius: var(--border-radius-md);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+
+          &.warning { background: var(--color-warning-light); }
+          &.error { background: var(--color-error-light); }
+          &.streak { background: var(--color-warning-light); }
+          &.success { background: var(--color-success-light); }
+
+          .icon {
+            font-size: 18px;
+          }
+        }
+
+        .suggestion-text {
+          flex: 1;
+          font-size: var(--font-size-md);
+          color: var(--color-text-primary);
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}
